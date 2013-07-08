@@ -18,7 +18,7 @@ if numel(dim) == 2   % 2D mask
   end
   % remove partial Fourier plane and compensate sampling density
   M = logical(M);
-  M = repmat(M, [1 nro]); 
+  M = repmat(M, [1 nro]);
 elseif numel(dim) == 3  % 3D mask
   nro = dim(2);
   npe1 = dim(1);
@@ -27,7 +27,7 @@ elseif numel(dim) == 3  % 3D mask
   [P C] = mask_pdf_2d([npe1 npe2], nacq, q, pf);
   R = rand(npe1, npe2);
   M = R <= P;
-  nchosen = sum(M(:));  
+  nchosen = sum(M(:));
   if nchosen > nacq   % correct for inexact number chosen
     outerOn = find(M & P ~= 1);
     numToFlip = nchosen - nacq;
@@ -46,7 +46,7 @@ elseif numel(dim) == 3  % 3D mask
     C = shiftdim(repmat(shiftdim(C, 1), [1 1 nro]), 1);
     C = ifftshift(C);
   end
-else 
+else
   error('Pattern dimension must be 2 or 3.');
 end
 
@@ -75,7 +75,7 @@ p(k < klo) = 0;
 
 function [P C] = mask_pdf_2d (dims, norm, q, sense_factor)
 if nargin < 4
-  sense_factor = 1; 
+  sense_factor = 1;
   if nargin < 3, q = 1; end
 end
 nz = dims(2);
