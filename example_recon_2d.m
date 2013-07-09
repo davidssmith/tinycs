@@ -7,7 +7,7 @@ load brains I256;
 I = I256;
 
 % generate a random sampling pattern
-mask = cs_generate_pattern(size(I), 4);
+mask = cs_generate_pattern(size(I), 1.4);
 
 % decimate the full Fourier data, leaving zeros in 'unacquired' spots
 data = fft2(I) .* mask;

@@ -1,11 +1,13 @@
 function M = cs_generate_pattern (dim, accel, q, seed, pf)
 %%CS_GENERATE_PATTERN  Random binary phase encode mask.
 if nargin < 3, q = 1; end
-if nargin < 4, seed = 11235; end
+if nargin < 4, seed = 11235813; end
 if nargin < 5, pf = 1; end
-rs = RandStream.create('mt19937ar','Seed',seed);
-RandStream.setDefaultStream(rs);  % deprecated
-%RandStream.setGlobalStream(rs);
+if is_octave()
+  rand('state', seed);
+else
+  rng(seed);
+end
 if numel(dim) == 2   % 2D mask
   nro = dim(1);
   npe = dim(2);
@@ -105,3 +107,12 @@ if sense_factor > 1
   P(C) = 0;
   P(D) = 1;
 end
+
+
+function r = is_octave ()
+persistent x
+if isempty(x)
+  x = exist('OCTAVE_VERSION', 'builtin');
+end
+r = x;
+  
