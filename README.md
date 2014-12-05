@@ -15,3 +15,5 @@ The Cartesian reconstruction is based on the split Bregman
 code written by Tom Goldstein, originally available here:
 <http://tag7.web.rice.edu/Split_Bregman.html>
 
+[![Analytics](https://ga-beacon.appspot.com/UA-57394339-1/tinycs/README.md?pixel)](https://github.com/igrigorik/ga-beacon)
+
